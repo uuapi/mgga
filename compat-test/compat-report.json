@@ -9,12 +9,15 @@
       "softkey_view": true,
       "softkey_def": false,
       "latin_ime": true,
+      "latinime_startinput": false,
       "number_mode_kb": true,
-      "autoscaletv": false,
+      "keyboard_state_method": false,
+      "keyboard_state_field": true,
+      "keyboard_name_method": false,
       "commit_wrapper": false,
-      "voice_aajc": false,
-      "voice_kkw": true,
-      "strip_holder": true
+      "commit_wrapper_method": false,
+      "strip_holder": true,
+      "autoscaletv": false
     },
     "flag_classes": [
       "odx",
@@ -33,12 +36,15 @@
       "softkey_view": true,
       "softkey_def": true,
       "latin_ime": true,
+      "latinime_startinput": false,
       "number_mode_kb": true,
-      "autoscaletv": false,
+      "keyboard_state_method": false,
+      "keyboard_state_field": true,
+      "keyboard_name_method": false,
       "commit_wrapper": true,
-      "voice_aajc": true,
-      "voice_kkw": true,
-      "strip_holder": true
+      "commit_wrapper_method": false,
+      "strip_holder": true,
+      "autoscaletv": false
     },
     "flag_classes": [
       "adbx",

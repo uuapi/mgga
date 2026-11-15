@@ -171,8 +171,10 @@ flag 名从混淆对象的 `a` 字段读取（失败沿继承链找首个 String
 | `LatinKeyboardWithNumberMode` + `aekp` | 九键标点 | ✓ / ✗ | ✓ / ✓ |
 | retention 特征 | 保存天数 | ✗ | ✗ |
 
-\* 16.6.3 无 `SoftKeyDef`，双拼/译词自动回退 TextView 标签路径。retention 为旧版本缺失，
-失效即降级。**扫描器可对新版本 Gboard 秒级出矩阵** —— 见 [compat-test](compat-test/)。
+\* 16.6.3 无 `SoftKeyDef`，双拼/译词自动回退 TextView 标签路径。retention / `cF` / `cz` /
+`aekp.q` 为 18.5.4 才有的混淆名——矩阵如实反映版本漂移，对应功能自动降级。
+**扫描器 v2 解析 class_data 定义级方法/字段表**（非仅字符串池），对新版本 Gboard 秒级出矩阵，
+哨兵 workflow 每周自动比对基线 —— 见 [compat-test](compat-test/)。
 
 实测版本锚点（来自上游模块源码注释）：九键标点 = 18.5.4[^9]，FuckGboard flag 类 = 17.8.4–18.5.2[^6]。
 
@@ -181,8 +183,13 @@ flag 名从混淆对象的 `a` 字段读取（失败沿继承链找首个 String
 ```bash
 git clone https://github.com/uuapi/mgga
 cd mgga
-./gradlew :app:assembleDebug     # 或 assembleRelease（已用 debug key 签名可直接安装）
+./gradlew :app:testDebugUnitTest   # JVM 单元测试（词典/语法/标点/敏感规则）
+./gradlew :app:assembleDebug       # 或 assembleRelease（已用 debug key 签名可直接安装）
 ```
+
+CI（`build.yml`）在每次 push 时跑单测 + 双构建，打 `v*` tag 自动发 Release；
+`monitor.yml` 每周一自动拉取最新 Gboard、刷新锚点矩阵、检测到漂移自动开 issue
+（runner 在海外，可直达 APKPure，正好补齐本地网络盲区）。
 
 - 依赖：JDK 21 · Android SDK 36 · AGP 8.9（Gradle wrapper 自动就位）
 - libxposed API 102 以本地 jar 形式编译（`app/libs/`，Maven 上 `interface:102` AAR 元数据要求

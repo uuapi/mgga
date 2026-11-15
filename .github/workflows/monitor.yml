@@ -1,0 +1,52 @@
+name: Gboard compatibility monitor
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'   # 每周一 03:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch Gboard APKs
+        run: python compat-test/fetch_apks.py --apkpure
+
+      - name: Scan hook anchors
+        run: python compat-test/scan.py
+
+      - name: Diff against baseline
+        id: diff
+        run: |
+          set +e
+          python compat-test/diff_report.py
+          echo "drift=$?" >> "$GITHUB_OUTPUT"
+          true
+
+      - name: Commit refreshed report
+        run: |
+          git config user.name "mgga-bot"
+          git config user.email "354038878+uuapi@users.noreply.github.com"
+          git add compat-test/compat-report.json || true
+          git diff --cached --quiet || git commit -m "chore(compat): refresh anchor report"
+          git push || true
+
+      - name: Open drift issue
+        if: steps.diff.outputs.drift == '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --title "⚠️ Gboard 锚点漂移（兼容性哨兵）" \
+            --body-file compat-test/compat-drift.md \
+            --label "compatibility" || true

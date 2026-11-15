@@ -48,6 +48,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var statusText: TextView
     private lateinit var rootColumn: LinearLayout
 
+    /** 搜索过滤：每个可配置行的视图 + 检索文本（标题/描述/键名） */
+    private data class FilterEntry(val view: View, val hay: String)
+    private val filterable = mutableListOf<FilterEntry>()
+
     private val glossaryPicker = registerForActivityResult(
         ActivityResultContracts.OpenDocument()
     ) { uri: Uri? -> uri?.let { readGlossary(it) } }
@@ -149,6 +153,26 @@ class MainActivity : AppCompatActivity() {
         title(rootColumn, "MGGA — Make Gboard Great Again")
         subtitle(rootColumn, "v${BuildConfig.VERSION_NAME} · libxposed API 102 · 改动后需强停 Gboard 生效")
 
+        // 功能搜索
+        val search = EditText(this).apply {
+            hint = "🔍 搜索功能 / 开关名"
+            isSingleLine = true
+            setPadding(dp(8), dp(8), dp(8), dp(8))
+        }
+        search.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, a: Int, b: Int, c: Int) {}
+            override fun onTextChanged(s: CharSequence?, a: Int, b: Int, c: Int) {}
+            override fun afterTextChanged(s: android.text.Editable?) {
+                val q = s?.toString()?.trim() ?: ""
+                for (e in filterable) {
+                    e.view.visibility =
+                        if (q.isEmpty() || e.hay.contains(q, ignoreCase = true)) View.VISIBLE
+                        else View.GONE
+                }
+            }
+        })
+        rootColumn.addView(search)
+
         // 状态卡
         card(rootColumn).apply {
             statusText = TextView(this@MainActivity).apply {
@@ -167,6 +191,20 @@ class MainActivity : AppCompatActivity() {
         section(R.string.sec_general)
         switchRow("详细日志", "输出调试日志到 logcat -s MGGA", "verbose_log", false)
         switchRow("注入提示", "Gboard 启动时短暂提示 MGGA 已注入", "startup_toast", false)
+        button(this@MainActivity, "导出配置（复制到剪贴板）") { exportConfig() }.apply {
+            rootColumn.addView(
+                this, LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+                ).apply { setMargins(dp(4), dp(4), dp(4), dp(4)) }
+            )
+        }
+        button(this@MainActivity, "导入配置（从剪贴板粘贴）") { importConfig() }.apply {
+            rootColumn.addView(
+                this, LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+                ).apply { setMargins(dp(4), dp(4), dp(4), dp(4)) }
+            )
+        }
 
         section(R.string.sec_clipboard)
         switchRow("启用剪贴板增强", "解除历史条数与过期限制", "clipboard_enabled", true)
@@ -337,6 +375,7 @@ class MainActivity : AppCompatActivity() {
             addView(sw)
         }
         rootColumn.addView(box)
+        filterable.add(FilterEntry(box, "$title $desc $key"))
         sw.setOnCheckedChangeListener { _, checked -> writeBool(key, checked) }
         rows.add(Row(key, Kind.BOOL, boolDefault = def) { v ->
             sw.setOnCheckedChangeListener(null)
@@ -367,6 +406,7 @@ class MainActivity : AppCompatActivity() {
             addView(et)
         }
         rootColumn.addView(box)
+        filterable.add(FilterEntry(box, "$title $desc $key"))
         fun commit() {
             val v = et.text.toString().trim().toIntOrNull() ?: def
             writeInt(key, v)
@@ -391,6 +431,7 @@ class MainActivity : AppCompatActivity() {
             addView(et)
         }
         rootColumn.addView(box)
+        filterable.add(FilterEntry(box, "$title $hint $key"))
         fun commit() {
             writeText(key, et.text.toString().trim())
         }
@@ -411,6 +452,7 @@ class MainActivity : AppCompatActivity() {
             addView(tv)
             addView(current)
         }
+        filterable.add(FilterEntry(box, "$title $key"))
         box.setOnClickListener {
             AlertDialog.Builder(this)
                 .setTitle(title)
@@ -431,6 +473,44 @@ class MainActivity : AppCompatActivity() {
     }
 
     // ---------------- 动作 ----------------
+
+    private fun exportConfig() {
+        val prefs = service?.getRemotePreferences(Config.PREF_GROUP) ?: run {
+            toast(getString(R.string.service_bound_fail)); return
+        }
+        val obj = org.json.JSONObject()
+        for (row in rows) {
+            when (row.kind) {
+                Kind.BOOL -> obj.put(row.key, prefs.getBoolean(row.key, row.boolDefault))
+                Kind.INT -> obj.put(row.key, prefs.getInt(row.key, row.intDefault))
+                Kind.TEXT -> obj.put(row.key, prefs.getString(row.key, row.strDefault) ?: row.strDefault)
+            }
+        }
+        val cm = getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+        cm.setPrimaryClip(android.content.ClipData.newPlainText("mgga_config", obj.toString()))
+        toast("配置已复制到剪贴板（${rows.size} 项）")
+    }
+
+    private fun importConfig() {
+        val cm = getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+        val text = cm.primaryClip?.getItemAt(0)?.text?.toString()
+            ?: run { toast("剪贴板为空"); return }
+        runCatching {
+            val obj = org.json.JSONObject(text)
+            var n = 0
+            for (row in rows) {
+                if (!obj.has(row.key)) continue
+                when (row.kind) {
+                    Kind.BOOL -> writeBool(row.key, obj.getBoolean(row.key))
+                    Kind.INT -> writeInt(row.key, obj.getInt(row.key))
+                    Kind.TEXT -> writeText(row.key, obj.getString(row.key))
+                }
+                n++
+            }
+            loadAll()
+            toast("已导入 $n 项，强停 Gboard 生效")
+        }.onFailure { toast("导入失败: ${it.message}") }
+    }
 
     private fun requestScope() {
         val s = service ?: run {
