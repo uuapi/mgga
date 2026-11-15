@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MGGA</string>
+    <string name="app_desc">Make Gboard Great Again</string>
+    <string name="xposed_desc">Make Gboard Great Again — 集成剪贴板解锁、Flag 覆写、AMOLED 纯黑、密码框全键盘、九键半角标点、双拼提示、候选词译词、语音换源、RGB 灯效等</string>
+
+    <string name="service_bound_ok">已连接 LSPosed 服务</string>
+    <string name="service_bound_fail">未连接 LSPosed 服务，请确认已在 LSPosed 中启用本模块</string>
+    <string name="scope_request">请求 Gboard 作用域</string>
+    <string name="scope_request_ok">作用域请求已发送，请在 LSPosed 中确认</string>
+    <string name="scope_request_fail">请求失败：%1$s</string>
+    <string name="force_stop_gboard">强停 Gboard（需 root）</string>
+    <string name="force_stop_ok">已强停 Gboard</string>
+    <string name="force_stop_fail">强停失败（可能没有 root），请到 LSPosed 手动重启作用域</string>
+
+    <string name="sec_general">通用</string>
+    <string name="sec_clipboard">剪贴板增强</string>
+    <string name="sec_flags">功能解锁（Flag 覆写）</string>
+    <string name="sec_appearance">外观</string>
+    <string name="sec_input">输入</string>
+    <string name="sec_toolbar">工具栏</string>
+    <string name="sec_gloss">候选词译词</string>
+    <string name="sec_shuangpin">双拼提示</string>
+    <string name="sec_misc">其他</string>
+
+    <string name="needs_restart">改动后需强停 Gboard 生效</string>
+</resources>

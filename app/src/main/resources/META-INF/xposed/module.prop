@@ -1,0 +1,9 @@
+name=MGGA
+description=Make Gboard Great Again - 集成多款 Gboard 模块特色功能的 LSPosed 新 API 模块
+version=0.1.0
+versionCode=1
+author=MGGA
+minApiVersion=102
+targetApiVersion=102
+staticScope=true
+exceptionMode=protective

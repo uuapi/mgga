@@ -1,0 +1,53 @@
+[
+  {
+    "apk": "apks\\16.6.3\\gboard-16.6.3-arm64.apk",
+    "anchors": {
+      "flag_reader": true,
+      "flag_reader2": false,
+      "retention": false,
+      "clipboard_provider": true,
+      "softkey_view": true,
+      "softkey_def": false,
+      "latin_ime": true,
+      "number_mode_kb": true,
+      "autoscaletv": false,
+      "commit_wrapper": false,
+      "voice_aajc": false,
+      "voice_kkw": true,
+      "strip_holder": true
+    },
+    "flag_classes": [
+      "odx",
+      "obw",
+      "nxw"
+    ],
+    "dex_files": 3
+  },
+  {
+    "apk": "apks\\17.8.3-beta\\gboard-17.8.3-beta-arm64.apk",
+    "anchors": {
+      "flag_reader": true,
+      "flag_reader2": false,
+      "retention": false,
+      "clipboard_provider": true,
+      "softkey_view": true,
+      "softkey_def": true,
+      "latin_ime": true,
+      "number_mode_kb": true,
+      "autoscaletv": false,
+      "commit_wrapper": true,
+      "voice_aajc": true,
+      "voice_kkw": true,
+      "strip_holder": true
+    },
+    "flag_classes": [
+      "adbx",
+      "odx",
+      "obw",
+      "acps",
+      "nxw",
+      "ajoh"
+    ],
+    "dex_files": 4
+  }
+]
