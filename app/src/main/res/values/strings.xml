@@ -2,17 +2,35 @@
 <resources>
     <string name="app_name">MGGA</string>
     <string name="app_desc">Make Gboard Great Again</string>
-    <string name="xposed_desc">Make Gboard Great Again — 集成剪贴板解锁、Flag 覆写、AMOLED 纯黑、密码框全键盘、九键半角标点、双拼提示、候选词译词、语音换源、RGB 灯效等</string>
+    <string name="xposed_desc">Make Gboard Great Again — 剪贴板解锁、Flag 覆写、AMOLED 纯黑、密码框全键盘、九键半角标点、双拼提示、离线译词、工具栏、Termux、RGB 灯效</string>
 
+    <!-- 状态 / 动作 -->
     <string name="service_bound_ok">已连接 LSPosed 服务</string>
     <string name="service_bound_fail">未连接 LSPosed 服务，请确认已在 LSPosed 中启用本模块</string>
+    <string name="scope_missing">，⚠ 尚未勾选 Gboard 作用域</string>
+    <string name="scope_included">，作用域已包含 Gboard ✓</string>
     <string name="scope_request">请求 Gboard 作用域</string>
     <string name="scope_request_ok">作用域请求已发送，请在 LSPosed 中确认</string>
     <string name="scope_request_fail">请求失败：%1$s</string>
     <string name="force_stop_gboard">强停 Gboard（需 root）</string>
     <string name="force_stop_ok">已强停 Gboard</string>
     <string name="force_stop_fail">强停失败（可能没有 root），请到 LSPosed 手动重启作用域</string>
+    <string name="restore_theme">恢复 Gboard 原厂主题 (root)</string>
+    <string name="restore_theme_ok">已恢复原厂主题并强停 Gboard</string>
+    <string name="act_export">导出配置（复制到剪贴板）</string>
+    <string name="act_import">导入配置（从剪贴板粘贴）</string>
+    <string name="act_export_ok">配置已复制到剪贴板（%1$d 项）</string>
+    <string name="act_import_ok">已导入 %1$d 项，强停 Gboard 生效</string>
+    <string name="act_import_fail">导入失败：%1$s</string>
+    <string name="clipboard_empty">剪贴板为空</string>
+    <string name="import_glossary">导入用户词表 (TSV 文件)</string>
+    <string name="import_glossary_ok">词表已导入（%1$d 行），强停 Gboard 生效</string>
+    <string name="import_glossary_fail">读取失败</string>
+    <string name="search_hint">搜索功能 / 开关名</string>
+    <string name="needs_restart">改动后需强停 Gboard 生效</string>
+    <string name="restart_note">v%1$s · libxposed API 102 · 改动后需强停 Gboard 生效</string>
 
+    <!-- 分组 -->
     <string name="sec_general">通用</string>
     <string name="sec_clipboard">剪贴板增强</string>
     <string name="sec_flags">功能解锁（Flag 覆写）</string>
@@ -22,6 +40,167 @@
     <string name="sec_gloss">候选词译词</string>
     <string name="sec_shuangpin">双拼提示</string>
     <string name="sec_misc">其他</string>
+    <string name="sec_diagnostics">状态诊断</string>
+    <string name="tab_settings">功能开关</string>
+    <string name="tab_diagnostics">诊断</string>
 
-    <string name="needs_restart">改动后需强停 Gboard 生效</string>
+    <!-- 通用 -->
+    <string name="verbose_log_t">详细日志</string>
+    <string name="verbose_log_d">输出调试日志到 logcat -s MGGA</string>
+    <string name="startup_toast_t">注入提示</string>
+    <string name="startup_toast_d">Gboard 启动时短暂提示 MGGA 已注入</string>
+
+    <!-- 剪贴板 -->
+    <string name="clipboard_enabled_t">启用剪贴板增强</string>
+    <string name="clipboard_enabled_d">解除历史条数与过期限制</string>
+    <string name="clipboard_limit_t">历史条数上限</string>
+    <string name="clipboard_limit_d">0 = 不限制</string>
+    <string name="clipboard_days_t">保留天数</string>
+    <string name="clipboard_days_d">0 = 永久</string>
+    <string name="secure_clipboard_t">敏感信息保护</string>
+    <string name="secure_clipboard_d">验证码/卡号/密码框内容不进入剪贴板历史</string>
+
+    <!-- Flag -->
+    <string name="flag_engine_t">启用 Flag 覆写引擎</string>
+    <string name="flag_engine_d">DexKit 动态定位 Gboard 服务端灰度开关</string>
+    <string name="flag_ai_t">AI 智能功能</string>
+    <string name="flag_ai_d">Smart Reply/Compose、Emojify、贴纸等</string>
+    <string name="flag_grammar_t">语法检查与校对</string>
+    <string name="flag_grammar_d">grammar checker / on-device proofread</string>
+    <string name="flag_writing_tools_t">写作工具 (Writing Tools)</string>
+    <string name="flag_writing_tools_d">Pixel 专属 AI 写作</string>
+    <string name="flag_writing_tools_v2_t">写作工具 V2</string>
+    <string name="flag_writing_tools_v2_d">预置 prompt / My Style（需上一项开启）</string>
+    <string name="flag_all_keyboards_t">写作后端全语言</string>
+    <string name="flag_all_keyboards_d">language tags 置 * 支持全部语言</string>
+    <string name="writing_backend_t">AI 推理后端</string>
+    <string name="backend_cloud">云端 (Gboard Server)</string>
+    <string name="backend_aicore">设备端 Gemini Nano</string>
+    <string name="backend_astrea">Astrea 私有推理（推荐）</string>
+    <string name="flag_multilingual_t">多语言同时输入</string>
+    <string name="flag_multilingual_d">多种语言混合输入不切换</string>
+    <string name="flag_floating_t">浮动键盘</string>
+    <string name="flag_floating_d">横屏/分屏/自由窗口自动悬浮</string>
+    <string name="flag_emoji_kitchen_t">Emoji Kitchen</string>
+    <string name="flag_emoji_kitchen_d">emoji 融合与表情搜索 v2</string>
+    <string name="flag_access_point_t">功能菜单重设计</string>
+    <string name="flag_access_point_d">Silk 主题 / 系统字体 / 自定义主题</string>
+    <string name="flag_metered_t">流量下载语言包</string>
+    <string name="flag_metered_d">允许计费网络下载</string>
+    <string name="flag_privacy_t">禁用遥测</string>
+    <string name="flag_privacy_d">关闭训练缓存/统计/日志上报</string>
+    <string name="flag_rambler_t">Gemini Rambler 语音</string>
+    <string name="flag_rambler_d">Pixel 语音听写（需自行验证兼容性）</string>
+    <string name="flag_rounded_t">圆角键帽 (M3E)</string>
+    <string name="flag_rounded_d">Material 3 Expressive 键帽样式</string>
+    <string name="flag_word_learning_t">增强词学习</string>
+    <string name="flag_word_learning_d">新词秒学/动态 LM/概念预测</string>
+    <string name="flag_inline_t">行内联想 (实验)</string>
+    <string name="flag_inline_d">decoder 侧 inline suggestions</string>
+    <string name="flag_tflite_t">TFLite 引擎 (实验)</string>
+    <string name="flag_tflite_d">神经网络预测加速引擎</string>
+    <string name="flag_chips_t">剪贴板操作 Chips</string>
+    <string name="flag_chips_d">与上方限制解除互斥</string>
+    <string name="custom_flags_t">自定义 Flag (JSON)</string>
+    <string name="custom_flags_d">示例: [{\"name\":\"enable_x\",\"type\":\"bool\",\"value\":\"true\"}]</string>
+
+    <!-- 外观 -->
+    <string name="amoled_t">AMOLED 纯黑背景</string>
+    <string name="amoled_d">深色模式下 surface 容器改纯黑</string>
+    <string name="emoji_alpha_t">候选 emoji 提亮</string>
+    <string name="emoji_alpha_d">候选栏 emoji 强制 100% 不透明</string>
+
+    <!-- 输入 -->
+    <string name="password_keyboard_t">密码框完整键盘</string>
+    <string name="password_keyboard_d">⚠ 密码框也显示全键盘，存在被记录的安全权衡</string>
+    <string name="punctuation_t">九键半角标点</string>
+    <string name="punctuation_d">中文九键数字页逗号/句号输出半角并显示 +−×÷</string>
+
+    <!-- 工具栏 -->
+    <string name="toolbar_t">键盘工具栏</string>
+    <string name="toolbar_d">剪贴板保险库/粘贴/全选/选择模式/光标/撤销</string>
+    <string name="toolbar_text1_t">文本快捷 1</string>
+    <string name="toolbar_text1_d">⭐ 按钮插入的文本</string>
+    <string name="toolbar_text2_t">文本快捷 2</string>
+    <string name="toolbar_text2_d">⭐⭐ 按钮插入的文本</string>
+    <string name="shot_capture_t">截图自动入库</string>
+    <string name="shot_capture_d">监视 Screenshots 目录新截图进保险库</string>
+    <string name="shot_to_clipboard_t">截图推入剪贴板</string>
+    <string name="shot_to_clipboard_d">入库同时复制到系统剪贴板</string>
+
+    <!-- 译词 -->
+    <string name="gloss_t">候选词译词</string>
+    <string name="gloss_d">候选词下方叠加目标语言释义（纯离线词典）</string>
+    <string name="gloss_target_t">目标语言</string>
+    <string name="gloss_target_d">zh / en / ja / de / fr / es / ru</string>
+    <string name="gloss_size_t">译词字号 (sp)</string>
+    <string name="gloss_size_d">8-14</string>
+    <string name="gloss_banner_t">注入横幅</string>
+    <string name="gloss_banner_d">首次注入时在键盘上显示胶囊提示</string>
+
+    <!-- 双拼 -->
+    <string name="shuangpin_t">双拼键帽提示</string>
+    <string name="shuangpin_d">字母键叠加声母/韵母（跟随 Gboard 双拼方案）</string>
+    <string name="shuangpin_size_t">提示字号 (sp)</string>
+    <string name="shuangpin_size_d">7-17</string>
+    <string name="shuangpin_dynamic_t">动态提示</string>
+    <string name="shuangpin_dynamic_d">等待韵母时只显示可配韵母</string>
+    <string name="shuangpin_blank_t">隐藏主字母</string>
+    <string name="shuangpin_blank_d">开启双拼时隐藏键帽上的全拼字母</string>
+    <string name="shuangpin_letter_size_t">主字母字号 (sp)</string>
+    <string name="shuangpin_letter_size_d">0 = 不改</string>
+    <string name="shuangpin_semicolon_t">分号键</string>
+    <string name="shuangpin_semicolon_d">浮动 ; 按钮（MS 等方案输入 ing 用）</string>
+    <string name="emoji_suggest_t">灵活 emoji 联想</string>
+    <string name="emoji_suggest_d">拼音输入时按内置词库显示 emoji 候选</string>
+
+    <!-- 其他 -->
+    <string name="termux_t">Termux 中文兼容</string>
+    <string name="termux_d">Termux 内拼音正常输入 + 进出自动切语言</string>
+    <string name="rgb_t">RGB 灯效 (实验)</string>
+    <string name="rgb_d">性能开销较大</string>
+    <string name="rgb_effect_t">RGB 特效</string>
+    <string name="rgb_effect_ripple">波纹</string>
+    <string name="rgb_effect_water">流体水滴</string>
+    <string name="rgb_effect_neon">霓虹闪电</string>
+    <string name="rgb_effect_supernova">超新星</string>
+    <string name="rgb_effect_magma">熔岩余烬</string>
+    <string name="rgb_effect_sonic">声波</string>
+    <string name="rgb_effect_blackhole">黑洞</string>
+    <string name="rgb_effect_rain">环境雨滴</string>
+    <string name="rgb_effect_chroma">雷蛇彩虹</string>
+    <string name="rgb_wave_speed_t">特效速度 %</string>
+    <string name="rgb_wave_speed_d">30-200</string>
+    <string name="rgb_trail_t">滑行轨迹</string>
+    <string name="rgb_trail_d">滑动打字霓虹尾迹</string>
+    <string name="rgb_turbo_t">WPM 过热</string>
+    <string name="rgb_turbo_d">打字加速时特效增强</string>
+    <string name="rgb_key_flow_t">键帽流光</string>
+    <string name="rgb_key_flow_d">光带扫过键帽</string>
+    <string name="rgb_border_t">仅键帽描边</string>
+    <string name="rgb_border_d">流光只亮键帽边框</string>
+    <string name="rgb_key_speed_t">流光速度 %</string>
+    <string name="rgb_key_speed_d">20-300</string>
+    <string name="rgb_glow_t">RGB 底光</string>
+    <string name="rgb_glow_d">键盘底部呼吸光带</string>
+    <string name="rgb_color1_t">RGB 主色</string>
+    <string name="rgb_color2_t">RGB 副色</string>
+    <string name="user_glossary_t">用户词表 (TSV)</string>
+    <string name="user_glossary_d">每行: 词条&lt;TAB&gt;译文，优先于内置词典</string>
+
+    <!-- 诊断 -->
+    <string name="diag_service_t">LSPosed 服务</string>
+    <string name="diag_scope_t">Gboard 作用域</string>
+    <string name="diag_gboard_t">Gboard 版本</string>
+    <string name="diag_gboard_missing">未检测到（需在 manifest queries 中声明可见性）</string>
+    <string name="diag_switches_t">功能开关概览</string>
+    <string name="diag_switches_summary">%1$d / %2$d 项已启用</string>
+    <string name="diag_compat_t">兼容性矩阵</string>
+    <string name="diag_compat_d">各功能对 Gboard 版本的锚点依赖可用 compat-test/scan.py 离线扫描；哨兵 workflow 每周自动更新仓库内的 compat-report.json</string>
+    <string name="diag_logs_t">排查日志</string>
+    <string name="diag_logs_d">注入成败逐子系统输出到 LSPosed 日志与 logcat。复制命令后在电脑执行：</string>
+    <string name="diag_logs_cmd">adb logcat -s MGGA</string>
+    <string name="act_copy">复制</string>
+    <string name="act_copied">已复制</string>
+    <string name="credit_note">MGGA 整合自 GboardHook / KeyFlux / FuckGboard / material-expressive-black / ForceGboardInputType / gboardtweak / gboard-gloss / Gboard+ / shuangpin-hints / termux-ime / RGB-studio · 100% 本地</string>
 </resources>

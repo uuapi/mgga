@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MGGA</string>
+    <string name="app_desc">Make Gboard Great Again</string>
+    <string name="xposed_desc">Make Gboard Great Again — clipboard unlock, flag overrides, AMOLED black, full keyboard in password fields, 9-key halfwidth punctuation, shuangpin hints, offline gloss, toolbar, Termux, RGB effects</string>
+
+    <string name="service_bound_ok">Connected to LSPosed service</string>
+    <string name="service_bound_fail">LSPosed service not connected. Enable MGGA in LSPosed first.</string>
+    <string name="scope_missing">, ⚠ Gboard scope not granted yet</string>
+    <string name="scope_included">, Gboard already in scope ✓</string>
+    <string name="scope_request">Request Gboard scope</string>
+    <string name="scope_request_ok">Scope request sent. Confirm it in LSPosed.</string>
+    <string name="scope_request_fail">Request failed: %1$s</string>
+    <string name="force_stop_gboard">Force stop Gboard (root)</string>
+    <string name="force_stop_ok">Gboard force-stopped</string>
+    <string name="force_stop_fail">Failed (root unavailable?). Restart scope in LSPosed manually.</string>
+    <string name="restore_theme">Restore stock Gboard theme (root)</string>
+    <string name="restore_theme_ok">Stock theme restored, Gboard stopped</string>
+    <string name="act_export">Export config (copy to clipboard)</string>
+    <string name="act_import">Import config (paste from clipboard)</string>
+    <string name="act_export_ok">Config copied to clipboard (%1$d items)</string>
+    <string name="act_import_ok">Imported %1$d items. Force stop Gboard to apply.</string>
+    <string name="act_import_fail">Import failed: %1$s</string>
+    <string name="clipboard_empty">Clipboard is empty</string>
+    <string name="import_glossary">Import user glossary (TSV file)</string>
+    <string name="import_glossary_ok">Glossary imported (%1$d lines). Force stop Gboard to apply.</string>
+    <string name="import_glossary_fail">Read failed</string>
+    <string name="search_hint">Search features / switches</string>
+    <string name="needs_restart">Force stop Gboard after changes</string>
+    <string name="restart_note">v%1$s · libxposed API 102 · force stop Gboard after changes</string>
+
+    <string name="sec_general">General</string>
+    <string name="sec_clipboard">Clipboard</string>
+    <string name="sec_flags">Feature unlock (flags)</string>
+    <string name="sec_appearance">Appearance</string>
+    <string name="sec_input">Input</string>
+    <string name="sec_toolbar">Toolbar</string>
+    <string name="sec_gloss">Candidate gloss</string>
+    <string name="sec_shuangpin">Shuangpin hints</string>
+    <string name="sec_misc">Misc</string>
+    <string name="sec_diagnostics">Diagnostics</string>
+    <string name="tab_settings">Features</string>
+    <string name="tab_diagnostics">Diagnostics</string>
+
+    <string name="verbose_log_t">Verbose logging</string>
+    <string name="verbose_log_d">Debug logs via logcat -s MGGA</string>
+    <string name="startup_toast_t">Injection toast</string>
+    <string name="startup_toast_d">Brief toast when Gboard starts</string>
+
+    <string name="clipboard_enabled_t">Enable clipboard tweaks</string>
+    <string name="clipboard_enabled_d">Unlock history size and retention limits</string>
+    <string name="clipboard_limit_t">History size limit</string>
+    <string name="clipboard_limit_d">0 = unlimited</string>
+    <string name="clipboard_days_t">Retention days</string>
+    <string name="clipboard_days_d">0 = keep forever</string>
+    <string name="secure_clipboard_t">Sensitive data guard</string>
+    <string name="secure_clipboard_d">OTP / card numbers / password fields never enter history</string>
+
+    <string name="flag_engine_t">Enable flag override engine</string>
+    <string name="flag_engine_d">DexKit-locates Gboard server-side flags at runtime</string>
+    <string name="flag_ai_t">AI features</string>
+    <string name="flag_ai_d">Smart Reply/Compose, Emojify, stickers</string>
+    <string name="flag_grammar_t">Grammar check &amp; proofread</string>
+    <string name="flag_grammar_d">grammar checker / on-device proofread</string>
+    <string name="flag_writing_tools_t">Writing Tools</string>
+    <string name="flag_writing_tools_d">Pixel-exclusive AI writing</string>
+    <string name="flag_writing_tools_v2_t">Writing Tools V2</string>
+    <string name="flag_writing_tools_v2_d">Predefined prompts / My Style (needs previous)</string>
+    <string name="flag_all_keyboards_t">All-language writing tools</string>
+    <string name="flag_all_keyboards_d">Wildcard language tags</string>
+    <string name="writing_backend_t">AI inference backend</string>
+    <string name="backend_cloud">Cloud (Gboard Server)</string>
+    <string name="backend_aicore">On-device Gemini Nano</string>
+    <string name="backend_astrea">Astrea private inference (recommended)</string>
+    <string name="flag_multilingual_t">Multilingual typing</string>
+    <string name="flag_multilingual_d">Mix languages without switching</string>
+    <string name="flag_floating_t">Floating keyboard</string>
+    <string name="flag_floating_d">Auto-float in landscape/split/freeform</string>
+    <string name="flag_emoji_kitchen_t">Emoji Kitchen</string>
+    <string name="flag_emoji_kitchen_d">Emoji mashups and emoji search v2</string>
+    <string name="flag_access_point_t">Menu redesign</string>
+    <string name="flag_access_point_d">Silk theme / system font / custom themes</string>
+    <string name="flag_metered_t">Downloads on metered</string>
+    <string name="flag_metered_d">Allow language pack downloads on mobile data</string>
+    <string name="flag_privacy_t">Disable telemetry</string>
+    <string name="flag_privacy_d">Turn off training caches / stats / log uploads</string>
+    <string name="flag_rambler_t">Gemini Rambler voice</string>
+    <string name="flag_rambler_d">Pixel agentic dictation (verify on your device)</string>
+    <string name="flag_rounded_t">Rounded keys (M3E)</string>
+    <string name="flag_rounded_d">Material 3 Expressive keycaps</string>
+    <string name="flag_word_learning_t">Enhanced word learning</string>
+    <string name="flag_word_learning_d">Fast OOV / dynamic LM / concept prediction</string>
+    <string name="flag_inline_t">Inline suggestions (experimental)</string>
+    <string name="flag_inline_d">decoder-side inline suggestions</string>
+    <string name="flag_tflite_t">TFLite engine (experimental)</string>
+    <string name="flag_tflite_d">Neural prediction acceleration</string>
+    <string name="flag_chips_t">Clipboard action chips</string>
+    <string name="flag_chips_d">Mutually exclusive with the unlock above</string>
+    <string name="custom_flags_t">Custom flags (JSON)</string>
+    <string name="custom_flags_d">e.g. [{\"name\":\"enable_x\",\"type\":\"bool\",\"value\":\"true\"}]</string>
+
+    <string name="amoled_t">AMOLED pure black</string>
+    <string name="amoled_d">Force black surfaces in dark mode</string>
+    <string name="emoji_alpha_t">Opaque candidate emoji</string>
+    <string name="emoji_alpha_d">Force 100% alpha on candidate bar emoji</string>
+
+    <string name="password_keyboard_t">Full keyboard in password fields</string>
+    <string name="password_keyboard_d">⚠ Security trade-off: Gboard may record passwords</string>
+    <string name="punctuation_t">9-key halfwidth punctuation</string>
+    <string name="punctuation_d">Digit page: ，。 → , . and + − × ÷ keys</string>
+
+    <string name="toolbar_t">Keyboard toolbar</string>
+    <string name="toolbar_d">Vault / paste / select / selection mode / cursor / undo</string>
+    <string name="toolbar_text1_t">Text shortcut 1</string>
+    <string name="toolbar_text1_d">Inserted by the ⭐ button</string>
+    <string name="toolbar_text2_t">Text shortcut 2</string>
+    <string name="toolbar_text2_d">Inserted by the ⭐⭐ button</string>
+    <string name="shot_capture_t">Screenshot capture</string>
+    <string name="shot_capture_d">Watch Screenshots folders into the vault</string>
+    <string name="shot_to_clipboard_t">Screenshots to clipboard</string>
+    <string name="shot_to_clipboard_d">Also copy captured screenshots to clipboard</string>
+
+    <string name="gloss_t">Candidate gloss</string>
+    <string name="gloss_d">Show translations under candidates (offline dictionaries)</string>
+    <string name="gloss_target_t">Target language</string>
+    <string name="gloss_target_d">zh / en / ja / de / fr / es / ru</string>
+    <string name="gloss_size_t">Gloss font size (sp)</string>
+    <string name="gloss_size_d">8-14</string>
+    <string name="gloss_banner_t">Injection banner</string>
+    <string name="gloss_banner_d">Show a capsule hint on first injection</string>
+
+    <string name="shuangpin_t">Shuangpin key hints</string>
+    <string name="shuangpin_d">Overlay initials/finals on keys (follows Gboard scheme)</string>
+    <string name="shuangpin_size_t">Hint font size (sp)</string>
+    <string name="shuangpin_size_d">7-17</string>
+    <string name="shuangpin_dynamic_t">Dynamic hints</string>
+    <string name="shuangpin_dynamic_d">Show only compatible finals while waiting</string>
+    <string name="shuangpin_blank_t">Hide primary letters</string>
+    <string name="shuangpin_blank_d">Hide full-pinyin letters while shuangpin is on</string>
+    <string name="shuangpin_letter_size_t">Primary letter size (sp)</string>
+    <string name="shuangpin_letter_size_d">0 = keep</string>
+    <string name="shuangpin_semicolon_t">Semicolon key</string>
+    <string name="shuangpin_semicolon_d">Floating ; button (for MS-style ing)</string>
+    <string name="emoji_suggest_t">Flexible emoji suggestions</string>
+    <string name="emoji_suggest_d">Builtin pinyin → emoji lexicon while composing</string>
+
+    <string name="termux_t">Termux compatibility</string>
+    <string name="termux_d">Pinyin works in Termux + auto language switching</string>
+    <string name="rgb_t">RGB effects (experimental)</string>
+    <string name="rgb_d">Noticeable performance cost</string>
+    <string name="rgb_effect_t">RGB effect</string>
+    <string name="rgb_effect_ripple">Ripple</string>
+    <string name="rgb_effect_water">Water drops</string>
+    <string name="rgb_effect_neon">Neon lightning</string>
+    <string name="rgb_effect_supernova">Supernova</string>
+    <string name="rgb_effect_magma">Molten magma</string>
+    <string name="rgb_effect_sonic">Sonic wave</string>
+    <string name="rgb_effect_blackhole">Black hole</string>
+    <string name="rgb_effect_rain">Ambient rain</string>
+    <string name="rgb_effect_chroma">Razer chroma</string>
+    <string name="rgb_wave_speed_t">Effect speed %</string>
+    <string name="rgb_wave_speed_d">30-200</string>
+    <string name="rgb_trail_t">Glide trail</string>
+    <string name="rgb_trail_d">Neon laser trail while swiping</string>
+    <string name="rgb_turbo_t">WPM overheat</string>
+    <string name="rgb_turbo_d">Effects intensify when typing fast</string>
+    <string name="rgb_key_flow_t">Keycap flow</string>
+    <string name="rgb_key_flow_d">Light band sweeps across keycaps</string>
+    <string name="rgb_border_t">Keycap border only</string>
+    <string name="rgb_border_d">Flow lights only keycap outlines</string>
+    <string name="rgb_key_speed_t">Flow speed %</string>
+    <string name="rgb_key_speed_d">20-300</string>
+    <string name="rgb_glow_t">RGB underglow</string>
+    <string name="rgb_glow_d">Breathing glow at the keyboard base</string>
+    <string name="rgb_color1_t">RGB primary</string>
+    <string name="rgb_color2_t">RGB secondary</string>
+    <string name="user_glossary_t">User glossary (TSV)</string>
+    <string name="user_glossary_d">Each line: word&lt;TAB&gt;gloss, overrides builtin</string>
+
+    <string name="diag_service_t">LSPosed service</string>
+    <string name="diag_scope_t">Gboard scope</string>
+    <string name="diag_gboard_t">Gboard version</string>
+    <string name="diag_gboard_missing">Not detected (manifest queries visibility)</string>
+    <string name="diag_switches_t">Switch overview</string>
+    <string name="diag_switches_summary">%1$d / %2$d enabled</string>
+    <string name="diag_compat_t">Compatibility matrix</string>
+    <string name="diag_compat_d">Anchor matrix per Gboard version: run compat-test/scan.py offline; the monitor workflow refreshes compat-report.json weekly</string>
+    <string name="diag_logs_t">Troubleshooting logs</string>
+    <string name="diag_logs_d">Per-subsystem install results go to LSPosed logs and logcat. Run on your PC:</string>
+    <string name="diag_logs_cmd">adb logcat -s MGGA</string>
+    <string name="act_copy">Copy</string>
+    <string name="act_copied">Copied</string>
+    <string name="credit_note">MGGA integrates GboardHook / KeyFlux / FuckGboard / material-expressive-black / ForceGboardInputType / gboardtweak / gboard-gloss / Gboard+ / shuangpin-hints / termux-ime / RGB-studio · 100% local</string>
+</resources>

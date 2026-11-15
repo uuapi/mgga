@@ -1,0 +1,272 @@
+{
+  "_comment": "MGGA flag 预设表。布尔值或 \"*\"（语言类自动映射）。group 对应设置开关 flag_<group>；writing_v2 额外要求 flag_writing_tools。特殊 Long/字符串 flag（backend、模型版本等）在 FlagEngine 中硬编码处理。",
+  "groups": [
+    {
+      "key": "ai",
+      "flags": {
+        "enable_ai_core_llm": true,
+        "enable_ai_core_smart_reply": true,
+        "enable_emojify": true,
+        "enable_emojify_settings_option": true,
+        "enable_smart_reply": true,
+        "enable_smart_compose": true,
+        "enable_smart_compose_inline_suggestions": true,
+        "enable_inline_suggestions": true,
+        "enable_inline_suggestions_on_all_apps": true,
+        "enable_custom_sticker_tab": true,
+        "enable_custom_sticker_lol_fix": true,
+        "enable_custom_sticker_naive_prompt_expander": true,
+        "enable_sticker_predictions_while_typing": true,
+        "enable_animated_emoji_content_suggestions": true,
+        "show_animated_emoji_in_expression_moment": true,
+        "enable_proactive_emoji_kitchen": true,
+        "enable_expression_moment": true,
+        "enable_emojify_language_tags": "*",
+        "enable_emojify_model_language_tags": "*",
+        "enable_expression_moment_language_tags": "*",
+        "enable_expression_moment_proactive_emoji_kitchen_language_tags": "*",
+        "enable_dynamic_art_language_tags": "*",
+        "enable_tenor_trending_term_v2_for_language_tags": "*"
+      }
+    },
+    {
+      "key": "grammar",
+      "flags": {
+        "enable_grammar_checker": true,
+        "enable_on_device_proofread": true,
+        "enable_llm_based_grammar_checker": true,
+        "enable_writing_tools_cooperative_mode": true,
+        "enable_text_conversion": true,
+        "enable_highlight_voice_reconversion_composing_text": true,
+        "nga_enable_undo_delete": true,
+        "enable_proofread": true,
+        "enable_pk_auto_correction_locales": true
+      }
+    },
+    {
+      "key": "multilingual",
+      "flags": {
+        "enable_multilingual_typing": true,
+        "enable_crank_for_first_supported_locale_in_multilingual": true,
+        "enable_crank_for_primary_locale_in_multilingual": true,
+        "enable_more_candidates_view_for_multilingual": true,
+        "enable_auto_multi_lang_on_all_pixel_devices": true,
+        "enable_speech_enhancement_for_multilang_users": true
+      }
+    },
+    {
+      "key": "floating",
+      "flags": {
+        "enable_auto_float_keyboard_in_landscape": true,
+        "enable_auto_float_keyboard_in_multi_window": true,
+        "enable_auto_float_keyboard_in_freeform": true,
+        "enable_split_keyboard_on_tablet_large": true,
+        "enable_dynamic_font_size_slider": true,
+        "enable_split_keyboard": true,
+        "enable_tablet_split_keyboard": true,
+        "enable_enter_exit_animation": true
+      }
+    },
+    {
+      "key": "emoji_kitchen",
+      "flags": {
+        "enable_emoji_kitchen_browse": true,
+        "enable_emoji_kitchen_browse_entry_point_v2": true,
+        "enable_emoji_kitchen_for_zero_state_emojis": true,
+        "enable_embedded_photo_picker": true,
+        "enable_emoji_search_v2": true,
+        "enable_emoji_recommendations": true,
+        "enable_play_emoji_kitchen_mix_animation": true
+      }
+    },
+    {
+      "key": "access_point",
+      "flags": {
+        "enable_access_points_menu_redesign": true,
+        "enable_access_point_keyboard": true,
+        "use_silk_theme_by_default": true,
+        "use_system_font": true,
+        "enable_custom_themes": true,
+        "enable_silk_theme": true,
+        "enable_candidates_access_points_switching_animation": true,
+        "keyboard_redesign_google_sans": true,
+        "keyboard_redesign_forbid_key_shadows": true,
+        "enable_fast_access_bar": true,
+        "enable_spellchecker_chips_ui": true,
+        "enable_spellchecker_chips_ui_web_view": true,
+        "emoji_scale_supported": true
+      }
+    },
+    {
+      "key": "metered_downloads",
+      "flags": {
+        "allow_language_pack_downloads_on_metered_connections": true,
+        "allow_metered_network_to_download_langid_model": true,
+        "allow_metered_small_speech_pack_downloads": true,
+        "force_speech_language_pack_updates": true
+      }
+    },
+    {
+      "key": "privacy",
+      "flags": {
+        "disable_correction_storage": true,
+        "disable_content_capture_for_input_view": true,
+        "deprecate_native_log_event": true,
+        "always_log_speed_stats": false,
+        "enable_logging_for_emoji_search_query": false,
+        "enable_internal_speech_enhancement_pii_logging": false,
+        "enable_report_from_training_cache": false,
+        "enable_chinese_training_cache": false,
+        "enable_spell_checker_training_cache": false,
+        "enable_training_cache_metrics_processors": false,
+        "enable_conversation_id_in_training_cache": false,
+        "enable_auto_correction_stats": false,
+        "enable_metric_counts_stats": false,
+        "enable_spatial_stats": false,
+        "enable_spell_checker_stats": false,
+        "enable_typo_stats": false,
+        "voice_donation_promo_banner": false,
+        "voice_donation_confirm_banner": false
+      }
+    },
+    {
+      "key": "rambler",
+      "flags": {
+        "enable_nga": true,
+        "enable_advanced_features_in_consolidated_sd_stack": true,
+        "enable_dictation_feature_split_install": true,
+        "handle_fallback_inside_sd_stack": true,
+        "immediately_end_dictation_on_keyboard_hidden": true,
+        "enable_soda_longform_experiment": true,
+        "show_rambler_dict_settings": true,
+        "enable_agentic_dictation": true,
+        "config_agentic_dictation": true,
+        "enable_jetson_in_toolbar": true,
+        "filter_rambler_contributed_input_view_session": true,
+        "enable_rambler_toolbar_at_cursor_position": true,
+        "enable_rambler_al_toolbar": true,
+        "enable_rambler_al_toolbar_overflow_menu": true,
+        "enable_hide_rambler_al_idling_state": true,
+        "enable_rambler_al_show_hide_new_animation": true,
+        "enable_rambler_al_teleporting_animation": true,
+        "rambler_motion_with_gradient_color": true,
+        "enable_rambler_motion_dots": true,
+        "rambler_preserve_rewritten_text_on_revert": true,
+        "agentic_dictation_spot_light2": true,
+        "agentic_dictation_new_gi_motion": true,
+        "enable_jetson_s3_quota_experiment_override": true,
+        "agentic_dictation_disable_pre_session_quota_check": true,
+        "enable_pcm_audio_caching_for_offline_fallback": true,
+        "agentic_dictation_enable_seamless_fallback": true,
+        "agentic_dictation_enable_proactive_parallel_asr": true
+      }
+    },
+    {
+      "key": "writing_core",
+      "flags": {
+        "writing_helper": true,
+        "config_proofread": true,
+        "proofread": true,
+        "writing_tools": true,
+        "writing_tools_enable_stable_entrance": true,
+        "enable_super_icon_in_dynamic_writing_tools": true,
+        "enable_writing_tools_replace_button": true,
+        "enable_writing_tools_compact_layout": true,
+        "enable_writing_tools_scroll_hint_anim": true,
+        "writing_helper_chip_in_spellchecker": true,
+        "writing_helper_on_selected_text": true,
+        "writing_helper_enable_text_stylization_internal": true,
+        "enable_writing_tools_cooperative_mode": true,
+        "enable_writing_tools_for_minors": true,
+        "enable_nga_lab_modeless_smartedit": true,
+        "enable_writing_tools_voice_commands": true
+      }
+    },
+    {
+      "key": "writing_v2",
+      "flags": {
+        "enable_writing_tools_v2": true,
+        "enable_writing_tools_v2_on_toolbar": true,
+        "enable_writing_tools_suggest_style": true,
+        "writing_tools_v2": true,
+        "writing_tools_v2_enable_suggested_instructions": true,
+        "writing_tools_v2_enable_suggested_instructions_in_draft_response": true,
+        "writing_tools_v2_display_instruction_suggestions_in_zero_state": true,
+        "writing_tools_v2_allow_empty_user_instruction": true,
+        "writing_tools_v2_show_predefined_prompts": true,
+        "enable_writing_tools_my_style": true,
+        "enable_writing_tools_my_style_plus": true
+      }
+    },
+    {
+      "key": "rounded_keys",
+      "flags": {
+        "belka_rounded_keyboard": true,
+        "belka_ui": true,
+        "belka_background": true,
+        "belka_center_key": true,
+        "top_rounded_keyboard": true,
+        "always_top_rounded_keyboard_for_debug": true,
+        "more_pill_keys": true,
+        "enable_rounded_key_by_default": true,
+        "enable_rounded_keys": true
+      }
+    },
+    {
+      "key": "word_learning",
+      "flags": {
+        "enable_device_intelligence": true,
+        "enable_autofill_ime_integration": true,
+        "enable_spell_checker_extension": true,
+        "enable_pc_user_history_ngram_count": true,
+        "populate_ngram_count_with_context": true,
+        "populate_ngram_timestamp_in_user_history": true,
+        "enable_multiword_predictions_from_user_history": true,
+        "enable_multiword_suggestions_from_user_history": true,
+        "enable_dynamic_lm_unigram_continuation_scoring": true,
+        "preserve_context_in_dynamic_lm_compute_history": true,
+        "enable_dynamic_lm_noise_filter": true,
+        "enable_oov_deduplication": true,
+        "config_expression": true,
+        "enable_concept_prediction_engine": true,
+        "enable_rule_based_concept_prediction": true,
+        "enable_last_word_rule_based_concept_prediction": true,
+        "enable_suffix_rule_based_concept_prediction": true,
+        "enable_emoji_suggestion_from_top_candidate": true,
+        "enable_predictions_from_emoji_shortcuts": true,
+        "enable_ngram_emoji_shortcuts_by_spans": true,
+        "enable_ngram_emoji_shortcuts_for_prediction": true,
+        "retain_emoji_shortcut_candidates_on_selection": true,
+        "update_streaming_touch_data_set_is_gesture": true,
+        "enable_two_stage_decoder": true,
+        "enable_space_transposition_post_correction": true,
+        "enable_pk_spatial_model_features": true,
+        "enable_pk_auto_correction_trigger_predictor": true,
+        "enable_post_correction_trigger_predictor": true,
+        "populate_preemptive_next_key_predictions": true
+      }
+    },
+    {
+      "key": "inline",
+      "flags": {
+        "enable_inline_suggestions_on_decoder_side": true,
+        "enable_multiword_predictions_as_inline_from_crank_cifg": true
+      }
+    },
+    {
+      "key": "tflite",
+      "flags": {
+        "enable_nwp_tflite_engine": true,
+        "enable_emoji_predictor_tflite_engine": true
+      }
+    },
+    {
+      "key": "clipboard_chips",
+      "flags": {
+        "enable_clipboard_action_chips": true,
+        "enable_clipboard_entity_extraction": true,
+        "enable_copy_to_reply": true
+      }
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -11,8 +12,8 @@ android {
         applicationId = "com.mgga.gboard"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.2.0"
     }
 
     buildTypes {
@@ -36,6 +37,7 @@ android {
 
     buildFeatures {
         buildConfig = true
+        compose = true
     }
 
     packaging {
@@ -58,6 +60,12 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.ui)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.material.icons)
+    implementation(libs.activity.compose)
 
     testImplementation("junit:junit:4.13.2")
 }

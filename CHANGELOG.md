@@ -2,6 +2,20 @@
 
 本文件遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 格式。
 
+## [v0.2.0] — 现代 UI 与工程化
+
+### 新增
+- 设置 App 全量重写为 **Jetpack Compose + Material 3**（动态取色、底部双 Tab：功能开关 / 诊断）
+- **诊断页**：LSPosed 服务状态、Gboard 作用域、Gboard 版本、开关概览、logcat 排查指引
+- **功能搜索**：70+ 开关实时过滤（标题/描述/键名）
+- **配置导出/导入**：JSON 进剪贴板，粘贴即恢复
+- **i18n**：全部界面文案资源化（简体中文默认 + English）
+- **Flag 预设表外置** `assets/flag_presets.json`（16 组 190+ flag），社区可以数据 PR 更新
+
+### 内部
+- libxposed API 102 骨架不变；hook 侧零改动
+
+
 ## [v0.1.0] — 首个公开版本
 
 ### 功能（全部独立开关）
